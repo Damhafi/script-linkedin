@@ -19,8 +19,9 @@ cards.forEach((card) => {
   if (cargo.textContent.toLowerCase().includes('outsystems') && !botaoConectar.classList.contains('artdeco-button--muted')) {
     setTimeout(() => {
         console.log('Adicionando:', nome.textContent.trim(), '-', cargo.textContent.trim());
+
       botaoConectar.click();
     }, 2000);
   }
-});```
+});
 ```
