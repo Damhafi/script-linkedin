@@ -1,27 +1,56 @@
-<h1 align="center">Hi 👋, I'm Script Linkedln</h1>
-<h3 align="center">Script Made in JavaScript</h3>
+# Script LinkedIn – Convites via DevTools
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-</p>
+Scripts em **JavaScript** para enviar convites no LinkedIn filtrando por palavra‑chave, rodando diretamente no **console do DevTools** do navegador.
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> </p>
+> ⚠️ Aviso  
+> O uso de automações pode violar os termos de uso do LinkedIn.  
+> Use por sua conta e risco. Sua conta pode sofrer limitações ou bloqueios.
 
-```javascript
-const cards = document.querySelectorAll('.discover-entity-type-card');
+---
 
-cards.forEach((card) => {
-  const nome = card.querySelector('.discover-person-card__name');
-  const cargo = card.querySelector('.discover-person-card__occupation');
-  const botaoConectar = card.querySelector('.artdeco-button--2');
+## Arquivos
 
-  if (cargo.textContent.toLowerCase().includes('outsystems') && !botaoConectar.classList.contains('artdeco-button--muted')) {
-    setTimeout(() => {
-        console.log('Adicionando:', nome.textContent.trim(), '-', cargo.textContent.trim());
+- `linkedin-automation.js`  
+  Nova versão do script. Faz scroll automático, carrega mais resultados e envia convites apenas para cards que contenham a palavra‑chave definida em `CONFIG.keyword`.
 
-      botaoConectar.click();
-    }, 2000);
-  }
-});
+- `old-script.js`  
+  Versão antiga / legado do script, mantida apenas para referência histórica.
+
+---
+
+## Como usar
+
+1. Acesse o [LinkedIn](https://www.linkedin.com/) e faça login.
+2. Vá para uma página de lista de pessoas (por exemplo: resultados de busca, lista de quem curtiu uma publicação, etc.).
+3. Abra o DevTools:
+   - Chrome/Edge: `F12` ou `Ctrl+Shift+I` (Windows/Linux), `Cmd+Option+I` (macOS) e vá na aba **Console**.
+4. Abra o arquivo `linkedin-automation.js` aqui no GitHub, copie **todo o código**.
+5. Cole o código no console e aperte `Enter`.
+
+O script vai:
+
+- Fazer scroll na página algumas vezes (`scrollAmount`).
+- Clicar em **“Carregar mais”** se esse botão existir.
+- Encontrar os cards de pessoas.
+- Enviar convite apenas para quem tiver o texto do card contendo a palavra‑chave (`CONFIG.keyword`).
+
+---
+
+## Configuração rápida
+
+Edite o objeto `CONFIG` no início do script antes de colar no console, se quiser:
+
+```js
+const CONFIG = {
+    keyword: 'outsystems', // palavra‑chave para filtrar o texto do card
+    scrollAmount: 5,       // quantos scrolls fazer para carregar mais pessoas
+    scrollDelay: 2000,     // tempo de espera entre scrolls (ms)
+    clickDelay: 1500       // tempo entre cada convite (ms)
+};
 ```
+
+---
+
+## Licença
+
+Defina aqui a licença que preferir (por exemplo, MIT).
